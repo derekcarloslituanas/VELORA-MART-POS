@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ==================== HTML FILE ==================== -->
+    <!-- This file contains the structure/layout of the VELORA MART system. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VELORA MART - POS System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ==================== HTML: LOGIN PAGE ==================== -->
+    <section id="loginPage" class="login-page">
+        <div class="login-box">
+            <h1>VELORA MART</h1>
+            <p>Point of Sale System</p>
+
+            <form id="loginForm">
+                <label for="username">Username</label>
+                <input type="text" id="username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+
+                <label for="role">Role</label>
+                <select id="role">
+                    <option value="Cashier">Cashier</option>
+                    <option value="Administrator">Administrator</option>
+                </select>
+
+                <button type="submit">Login</button>
+                <p id="loginMessage" class="message"></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- ==================== HTML: MAIN SYSTEM ==================== -->
+    <section id="systemPage" class="hidden">
+        <header class="topbar">
+            <div>
+                <h1>VELORA MART</h1>
+                <span id="loggedUser"></span>
+            </div>
+            <button id="logoutBtn" class="danger-btn">Logout</button>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" data-section="posSection">POS / Checkout</button>
+            <button class="tab-btn admin-only" data-section="inventorySection">Inventory</button>
+            <button class="tab-btn admin-only" data-section="productsSection">Products</button>
+            <button class="tab-btn" data-section="salesSection">Sales History</button>
+        </nav>
+
+        <!-- ==================== HTML: POS ==================== -->
+        <main id="posSection" class="content-section">
+            <div class="dashboard-grid">
+                <div class="panel products-panel">
+                    <div class="panel-header">
+                        <h2>Product Directory</h2>
+                        <input type="text" id="productSearch" placeholder="Search product...">
+                    </div>
+
+                    <div id="categoryButtons" class="category-buttons"></div>
+                    <div id="productGrid" class="product-grid"></div>
+                </div>
+
+                <div class="panel checkout-panel">
+                    <div class="panel-header">
+                        <h2>Current Order</h2>
+                        <button id="clearCartBtn" class="danger-btn small-btn">Clear Order</button>
+                    </div>
+
+                    <div id="cartItems" class="cart-items"></div>
+
+                    <div class="checkout-summary">
+                        <div><span>Subtotal</span><strong id="subtotal">₱0.00</strong></div>
+
+                        <div class="discount-row">
+                            <label for="discount">Discount %</label>
+                            <input type="number" id="discount" min="0" max="100" value="0">
+                        </div>
+
+                        <div><span>Discount</span><strong id="discountAmount">₱0.00</strong></div>
+                        <div class="grand-total"><span>Total</span><strong id="total">₱0.00</strong></div>
+
+                        <label for="paymentMethod">Payment Method</label>
+                        <select id="paymentMethod">
+                            <option value="Cash">Cash</option>
+                            <option value="GCash">GCash</option>
+                            <option value="Card">Card</option>
+                            <option value="Maya">Maya</option>
+                        </select>
+
+                        <div id="cashBox">
+                            <label for="cashReceived">Cash Received</label>
+                            <input type="number" id="cashReceived" min="0" step="0.01" value="0">
+                            <p>Change: <strong id="change">₱0.00</strong></p>
+                        </div>
+
+                        <button id="checkoutBtn" class="success-btn">Complete Sale</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- ==================== HTML: INVENTORY ==================== -->
+        <main id="inventorySection" class="content-section hidden">
+            <div class="stats-grid">
+                <div class="stat-card"><span>Total Products</span><strong id="statProducts">0</strong></div>
+                <div class="stat-card"><span>Total Stock Units</span><strong id="statStock">0</strong></div>
+                <div class="stat-card"><span>Low Stock</span><strong id="statLowStock">0</strong></div>
+                <div class="stat-card"><span>Inventory Value</span><strong id="statValue">₱0.00</strong></div>
+            </div>
+
+            <div class="panel">
+                <h2>Inventory Management</h2>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Status</th>
+                                <th>Adjustment</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventoryTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+        <!-- ==================== HTML: PRODUCT MANAGEMENT ==================== -->
+        <main id="productsSection" class="content-section hidden">
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Product Management</h2>
+                    <button id="addProductBtn" class="success-btn">Add Product</button>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Subcategory</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+        <!-- ==================== HTML: SALES HISTORY ==================== -->
+        <main id="salesSection" class="content-section hidden">
+            <div class="panel">
+                <h2>Sales History</h2>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Receipt No.</th>
+                                <th>Date</th>
+                                <th>Cashier</th>
+                                <th>Items</th>
+                                <th>Payment</th>
+                                <th>Total</th>
+                                <th>Receipt</th>
+                            </tr>
+                        </thead>
+                        <tbody id="salesTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!-- ==================== HTML: PRODUCT MODAL ==================== -->
+    <div id="productModal" class="modal hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add Product</h2>
+                <button id="closeModalBtn">×</button>
+            </div>
+
+            <form id="productForm">
+                <input type="hidden" id="productId">
+
+                <label>Product Name</label>
+                <input type="text" id="productName" required>
+
+                <label>Category</label>
+                <input type="text" id="productCategory" required>
+
+                <label>Subcategory</label>
+                <input type="text" id="productSubcategory" required>
+
+                <label>Price</label>
+                <input type="number" id="productPrice" min="0" step="0.01" required>
+
+                <label>Stock Quantity</label>
+                <input type="number" id="productStock" min="0" required>
+
+                <label>Product Image / Emoji</label>
+                <input type="text" id="productImage" placeholder="Example: 🍎">
+
+                <button type="submit" class="success-btn">Save Product</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== HTML: RECEIPT MODAL ==================== -->
+    <div id="receiptModal" class="modal hidden">
+        <div class="receipt-box">
+            <div id="receiptPreview"></div>
+            <div class="receipt-actions">
+                <button id="printReceiptBtn" class="success-btn">Print Receipt</button>
+                <button id="newCheckoutBtn">Start New Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== HTML: JAVASCRIPT FILE LINK ==================== -->
+    <script src="script.js"></script>
+</body>
+</html>

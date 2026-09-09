@@ -1,0 +1,500 @@
+/* =========================================================
+   CSS FILE - VELORA MART
+   This file controls the appearance, colors, spacing,
+   tables, buttons, responsive layout, and modals.
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 7px;
+    padding: 10px 14px;
+    background: #1f2937;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ==================== CSS: LOGIN ==================== */
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e8eef2, #ffffff);
+}
+
+.login-box {
+    width: 380px;
+    background: white;
+    padding: 32px;
+    border-radius: 14px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.login-box h1 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.login-box p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 22px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 6px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cfd5da;
+    border-radius: 7px;
+    background: white;
+}
+
+.login-box button[type="submit"] {
+    width: 100%;
+    margin-top: 18px;
+}
+
+.message {
+    margin-top: 12px;
+    color: #b42318 !important;
+}
+
+/* ==================== CSS: HEADER ==================== */
+
+.topbar {
+    background: #111827;
+    color: white;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar h1 {
+    font-size: 24px;
+}
+
+.topbar span {
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.tabs {
+    display: flex;
+    gap: 8px;
+    padding: 12px 24px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    overflow-x: auto;
+}
+
+.tab-btn {
+    background: #e5e7eb;
+    color: #111827;
+}
+
+.tab-btn.active {
+    background: #111827;
+    color: white;
+}
+
+/* ==================== CSS: LAYOUT ==================== */
+
+.content-section {
+    padding: 24px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    gap: 20px;
+}
+
+.panel {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 20px;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.panel-header input {
+    max-width: 280px;
+}
+
+.category-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.category-buttons button {
+    background: #e5e7eb;
+    color: #111827;
+}
+
+.category-buttons button.active {
+    background: #111827;
+    color: white;
+}
+
+/* ==================== CSS: PRODUCTS ==================== */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+    gap: 14px;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 14px;
+    background: white;
+}
+
+.product-image {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    background: #f3f4f6;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.product-card h3 {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.product-card p {
+    color: #666;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.price {
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+.product-card button {
+    width: 100%;
+}
+
+.product-card button:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* ==================== CSS: CART ==================== */
+
+.checkout-panel {
+    max-height: calc(100vh - 150px);
+    overflow-y: auto;
+}
+
+.cart-items {
+    min-height: 160px;
+    max-height: 370px;
+    overflow-y: auto;
+}
+
+.cart-item {
+    border-bottom: 1px solid #eee;
+    padding: 12px 0;
+}
+
+.cart-item-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.quantity-controls button {
+    padding: 4px 8px;
+}
+
+.checkout-summary {
+    margin-top: 16px;
+    border-top: 2px solid #eee;
+    padding-top: 14px;
+}
+
+.checkout-summary > div {
+    display: flex;
+    justify-content: space-between;
+    margin: 9px 0;
+}
+
+.discount-row {
+    align-items: center;
+    gap: 10px;
+}
+
+.discount-row input {
+    width: 90px;
+}
+
+.grand-total {
+    font-size: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.checkout-summary > select,
+.checkout-summary > input {
+    margin-bottom: 8px;
+}
+
+.success-btn {
+    background: #15803d;
+}
+
+.danger-btn {
+    background: #b42318;
+}
+
+.small-btn {
+    padding: 7px 10px;
+}
+
+/* ==================== CSS: STATISTICS ==================== */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.stat-card span {
+    display: block;
+    color: #666;
+    font-size: 13px;
+}
+
+.stat-card strong {
+    display: block;
+    font-size: 25px;
+    margin-top: 7px;
+}
+
+/* ==================== CSS: TABLES ==================== */
+
+.table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 750px;
+}
+
+th,
+td {
+    padding: 11px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+th {
+    background: #f3f4f6;
+}
+
+.low-stock {
+    color: #b42318;
+    font-weight: bold;
+}
+
+.in-stock {
+    color: #15803d;
+    font-weight: bold;
+}
+
+.table-image {
+    font-size: 30px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+/* ==================== CSS: MODALS ==================== */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 100;
+}
+
+.modal-box,
+.receipt-box {
+    width: min(500px, 100%);
+    background: white;
+    border-radius: 12px;
+    padding: 22px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.modal-header button {
+    background: transparent;
+    color: #111;
+    font-size: 25px;
+    padding: 0 8px;
+}
+
+.receipt-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.receipt-actions button {
+    flex: 1;
+}
+
+.receipt {
+    border: 1px solid #ddd;
+    padding: 18px;
+    font-family: "Courier New", monospace;
+    background: white;
+}
+
+.receipt h2,
+.receipt p.center {
+    text-align: center;
+}
+
+.receipt-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 5px 0;
+}
+
+.receipt-total {
+    border-top: 1px dashed #333;
+    padding-top: 8px;
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+/* ==================== CSS: RESPONSIVE ==================== */
+
+@media (max-width: 1000px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-panel {
+        max-height: none;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .content-section {
+        padding: 12px;
+    }
+
+    .topbar {
+        padding: 14px;
+    }
+
+    .panel-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .panel-header input {
+        max-width: none;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .login-box {
+        width: calc(100% - 30px);
+    }
+}
